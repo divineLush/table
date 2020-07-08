@@ -10,8 +10,10 @@
     }
 
     &__cell {
-        display: flex;
-        flex-direction: column;
+        &__content {
+            display: flex;
+            flex-direction: column;
+        }
 
         &--highlighted {
             background-color: $highlighted-cell-color;

@@ -1,31 +1,36 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
+import Form from 'react-bootstrap/Form'
 import '../styles/AppMainTable.scss'
 
 const AppMainTable = () => {
     const highlightedCols = [2, 5, 6, 9]
 
-    const theadData = () => {
-        const data = ['Секции', 'Бедный', 'Богатый']
-        for (let i = 1; i <= 15; i++ )
-            data.push(i)
+    const cellClassName = idx =>
+        highlightedCols.find(el => el === idx) !== undefined
+            ? 'main-table__cell--highlighted' : ''
 
-        return data
-    }
+    const theadRow = (() => {
+        const theadData = (() => {
+            const data = ['Секции', 'Бедный', 'Богатый']
+            for (let i = 1; i <= 15; i++ )
+                data.push(i)
 
-    const tbodyData = () => {
+            return data
+        })()
+
+        return theadData
+            .map((el, key) => <td key={ key }>{ el }</td>)
+    })()
+
+    const tbodyData = (() => {
+        const body = 'рекомендация'
         const data = [
             [
-                {
-                    title: 'Нагрузки на МСЦ',
-                    body: 'рекомендация'
-                }
+                { title: 'Нагрузки на МСЦ', body }
             ],
             [
-                {
-                    title: 'Руда/вода',
-                    body: 'рекомендация'
-                }
+                { title: 'Руда/вода', body }
             ]
         ]
 
@@ -45,23 +50,22 @@ const AppMainTable = () => {
             data[1].push(secondRow)
         }
 
+        const thirdRow = [{ title: 'Работа доп. МШ', body }, [7, 6], [1, 1], ['да', 'нет']]
+        for (let i = 0; i < 7; i++) {
+            thirdRow.push([])
+            thirdRow.push(['да', 'да'])
+        }
+        data.push(thirdRow)
+
         return data
-    }
+    })()
 
     const renderCell = (idx, first, second) => {
-        const cellClassName = idx => {
-            const highlight = idx =>
-                highlightedCols.filter(el => el === idx).length !== 0
-                    ? 'main-table__cell--highlighted' : ''
-
-            return `main-table__cell ${highlight(idx)}`
-        }
-
         const titleStyle = idx =>
             ({ fontWeight: idx === 0 ? 'bold' : 'normal' })
 
-        return <div className={ cellClassName(idx) }>
-            <span style={ titleStyle() }>{ first }</span>
+        return <div className="main-table__cell__content">
+            <span style={ titleStyle(idx) }>{ first }</span>
             <span>{ second }</span>
         </div>
     }
@@ -70,14 +74,14 @@ const AppMainTable = () => {
         <div>
             <Table className="main-table" striped size="sm">
                 <thead className="main-table__head">
-                    <tr>{ theadData().map((el, key) => <td key={ key }>{ el }</td>) }</tr>
+                    <tr>{ theadRow }</tr>
                 </thead>
                 <tbody>
-                    { tbodyData()
+                    { tbodyData
                         .map((el, key) =>
                             <tr key={ key }>
                                 { el.map((el, key) =>
-                                    <td key={ key }>
+                                    <td className={ cellClassName(key) } key={ key }>
                                         {
                                             key !== 0
                                                 ? renderCell(key, el[0], el[1])
@@ -87,6 +91,60 @@ const AppMainTable = () => {
                                 }
                             </tr>)
                     }
+                    <tr>
+                        <td>
+                            <div className="main-table__cell__content">
+                                <span style={{ fontWeight: 'bold' }}>Доп. режимы</span>
+                                <span>режимы</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td colSpan="2"><span>Насос 802</span></td>
+                        <td>
+                            <div className="main-table__cell__content">
+                                <span>да</span>
+                                <span>нет</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td colSpan="2"><span>Насос 163</span></td>
+                        <td>
+                            <div className="main-table__cell__content">
+                                <span>нет</span>
+                                <span>нет</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td colSpan="2"><span>Насос 13</span></td>
+                        <td>
+                            <div className="main-table__cell__content">
+                                <span>нет</span>
+                                <span>нет</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td colSpan="3">
+                            <div style={{ display: 'flex' }}>
+                                <span>Насос 15</span>
+                                <Form>
+                                    <Form.Group>
+                                        <Form.Control
+                                            style={{ padding: '0.5vh', fontSize: '1.5vh' }}
+                                            size="sm"
+                                            as="select"
+                                        >
+                                            <option>на 3-97</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </Form.Control>
+                                    </Form.Group>
+                                </Form>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </Table>
         </div>
