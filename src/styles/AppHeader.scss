@@ -1,0 +1,31 @@
+@import '../assets/scss/colors.scss';
+
+.app-header {
+    height: 10vh;
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0 0 10px black;
+
+    &__logo {
+        width: 22vh;
+        height: 5vh;
+        padding: 0 7vh;
+        margin: auto 0;
+    }
+
+    &__link {
+        text-decoration: none;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        margin: 0 6vh;
+        font-size: 3vh;
+
+        &--active {
+            border-bottom: 0.3vh solid $header-link-border-color;
+        }
+    }
+}
