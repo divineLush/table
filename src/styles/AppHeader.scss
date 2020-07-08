@@ -5,9 +5,15 @@
     display: flex;
     justify-content: flex-start;
     box-shadow: 0 0 10px black;
+    z-index: 9999;
+    position: relative;
+
+    &__nav {
+        display: flex;
+    }
 
     &__logo {
-        width: 22vh;
+        width: 32vh;
         height: 5vh;
         padding: 0 7vh;
         margin: auto 0;
@@ -25,7 +31,7 @@
         font-size: 3vh;
 
         &--active {
-            border-bottom: 0.3vh solid $header-link-border-color;
+            border-bottom: 0.4vh solid $header-link-border-color;
         }
     }
 }
