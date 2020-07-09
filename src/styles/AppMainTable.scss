@@ -22,7 +22,7 @@
         }
 
         &--color-highlight {
-            color: $highlighted-cell-text-color;
+            color: $danger-strong;
         }
 
         &--bold {
@@ -41,7 +41,7 @@
             border: 0.5vh solid $confirm;
             border-left-width: 0;
             border-right-width: 0;
-            border-top-color: $highlighted-cell-text-color;
+            border-top-color: $danger-strong;
         }
     }
 
