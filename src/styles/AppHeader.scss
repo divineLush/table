@@ -20,7 +20,7 @@
     }
 
     &__link {
-        text-decoration: none;
+        text-decoration: none !important;
         display: flex;
         -webkit-box-align: center;
         -webkit-box-pack: center;
@@ -29,6 +29,10 @@
         color: black;
         margin: 0 6vh;
         font-size: 3vh;
+
+        &:hover {
+            color: $main-table-title-color;
+        }
 
         &--active {
             border-bottom: 0.4vh solid $header-link-border-color;

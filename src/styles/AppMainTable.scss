@@ -4,7 +4,7 @@
     font-size: 2.5vh;
     text-align: center;
 
-    &__head {
+    &__title {
         font-weight: bold;
         color: $main-table-title-color;
     }
@@ -13,10 +13,43 @@
         &__content {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            padding: 0.5vh 0.75vh;
         }
 
         &--highlighted {
             background-color: $highlighted-cell-color;
+        }
+
+        &--color-highlight {
+            color: $highlighted-cell-text-color;
+        }
+
+        &--bold {
+            font-weight: bold;
+        }
+
+        &--background-confirm {
+            background-color: $confirm;
+        }
+
+        &--background-danger {
+            background-color: $danger;
+        }
+
+        &--border {
+            border: 0.5vh solid $confirm;
+            border-left-width: 0;
+            border-right-width: 0;
+            border-top-color: $highlighted-cell-text-color;
+        }
+    }
+
+    &__btn--rounded {
+        button {
+            padding: 0 1.3vh;
+            border-radius: 100vh;
+            font-size: 2.2vh;
         }
     }
 }
