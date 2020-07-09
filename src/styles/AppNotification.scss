@@ -1,0 +1,44 @@
+@import '../assets/scss/colors.scss';
+
+.app-notification {
+    background-color: $danger;
+    padding: 2vh;
+    width: 45vh;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 3vh;
+
+        &__title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 25vh;
+
+            &__icon {
+                display: block;
+                color: $highlighted-cell-text-color;
+            }
+
+            &__text {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__body {
+        font-size: 2.5vh;
+
+        &__text {
+            margin: 2vh 0;
+        }
+
+        &__btn {
+            float: right;
+            font-size: 2vh !important;
+            border-width: 0.75vh;
+            padding: 1vh 7vh !important;
+        }
+    }
+}
