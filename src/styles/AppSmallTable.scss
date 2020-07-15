@@ -1,0 +1,38 @@
+@import '../assets/scss/colors.scss';
+
+.small-table {
+    color: $main-table-title-color;
+    background-color: $secondary-background-color;
+    padding: 2vh 3vh;
+
+    &__title {
+        font-weight: bold;
+    }
+
+    &__head {
+        tr {
+            border-bottom: 0.3vh solid black;
+        }
+    }
+
+    &__col {
+        vertical-align: bottom !important;
+
+        &__hint {
+            font-size: 2vh;
+            font-weight: normal !important;
+        }
+
+        p {
+            text-align: center;
+            margin: 0;
+        }
+
+        &--highlighted {
+            p {
+                color: $main-table-title-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
